@@ -1,0 +1,128 @@
+@prefix : <http://lari-datasets.ilc.cnr.it/lemonEty#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Cognate a rdfs:Class ;
+    rdfs:label "Cognate"@en ;
+    rdfs:comment "'Cognate' is a subclass of Lexical Entry that consists of lexemes which are cognates of another Lexical Entry."@en ;
+    rdfs:subClassOf ontolex:LexicalEntry .
+
+:EtyLink a rdfs:Class ;
+    rdfs:label "Etymological Link"@en ;
+    rdfs:comment "'Etymological Link' is a class that consists of individuals that represent the etymological relationship between two linguistic entities."@en .
+
+:Etymology a rdfs:Class ;
+    rdfs:label "Etymology"@en ;
+    rdfs:comment "'Etymology' is a class that consists of individuals that describe the history of a Lexical Entry."@en .
+
+:Etymon a rdfs:Class ;
+    rdfs:label "Etymon"@en ;
+    rdfs:comment "'Etymon' is a subclass of Lexical Entry that consists of invidividuals whose role is to describe the origin and history of another Lexical Entry."@en ;
+    rdfs:subClassOf ontolex:LexicalEntry .
+
+<http://lari-datasets.ilc.cnr.it/lemonEty#> a owl:Ontology ;
+    dct:contributor <http://www.ilc.cnr.it/en/content/anas_fahad_khan> ;
+    dct:description "lemonEty is an extension of the ontolex-lemon model that provides concepts and properties that are useful in representing etymological information."@en ;
+    dct:issued "2018-05-04" ;
+    dct:rights "CC-BY" ;
+    dct:title "lemonEty"@en ;
+    owl:imports <http://www.w3.org/ns/lemon/all>,
+        <http://www.w3.org/ns/lemon/ontolex> ;
+    owl:versionInfo "Version 0.1.0" .
+
+:cognate a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "cognate"@en ;
+    rdfs:comment "'cognate' is an object property linking a linguistic entity with a Cognate."@en ;
+    rdfs:range :Cognate .
+
+:etyLinkType a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "etymological link type"@en ;
+    rdfs:comment "'etymological link type' specifies the type of a Etymological Link."@en ;
+    rdfs:range :EtyLink .
+
+:etySource a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "etymological source"@en ;
+    rdfs:comment "'etymological source' is an object property that links an EtyLink with a linguistic entity which is the source of the relationship which the former represents."@en ;
+    rdfs:domain :EtyLink .
+
+:etySubSource a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "etymological sub-source"@en ;
+    rdfs:comment "'etymological sub-source' is an object property that further specifies the etymological source of an EtyLink (assuming a prior use of etySource)."@en ;
+    rdfs:domain :EtyLink .
+
+:etySubTarget a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "etymological sub-target"@en ;
+    rdfs:comment "'etymological sub-target' is an object property that further specifies the etymological target of an EtyLink (assuming a prior use of etyTarget)."@en ;
+    rdfs:domain :EtyLink .
+
+:etyTarget a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "etymological target"@en ;
+    rdfs:comment "'etymological target' is an object property that links an EtyLink with a linguistic entity which is the target of the relationship which the former represents."@en ;
+    rdfs:domain :EtyLink .
+
+:etymology a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "etymology"@en ;
+    rdfs:comment "'etymology' is  an object property linking a linguistic entity with an Etymology."@en ;
+    rdfs:range :Etymology .
+
+:etymon a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "etymon"@en ;
+    rdfs:comment "'etymon' is  an object property that relates an Etymology with its related etymons."@en ;
+    rdfs:domain :Etymology ;
+    rdfs:range :Etymon .
+
+:isCognateOf a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "isCognateOf"@en ;
+    rdfs:comment "'is cognate of' is an object property linking a Cognate with some linguistic entity."@en ;
+    rdfs:domain :Cognate .
+
+:isEtyLinkOf a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "is etymological link of"@en ;
+    rdfs:comment "'is etymological link of' is an object property that relates an Etymology with an Etymological Link."@en ;
+    rdfs:domain :EtyLink ;
+    rdfs:range :Etymology .
+
+:isEtymologyOf a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "is etymology of"@en ;
+    rdfs:comment "'is etymology of' is an object property linking an Etymology with a linguistic entity."@en ;
+    rdfs:domain :Etymology .
+
+:isEtymonOf a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "is etymon of"@en ;
+    rdfs:comment "'is etymon of' is an object property that relates an Etymon with the etymologies it is a part of."@en ;
+    rdfs:domain :Etymon ;
+    rdfs:range :Etymology .
+
+:startingLink a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "starting link"@en ;
+    rdfs:comment "'starting link' is  an object property that relates an Etymology with its first Etymological Link."@en ;
+    rdfs:domain :Etymology ;
+    rdfs:range :EtyLink ;
+    rdfs:subPropertyOf :hasEtyLink .
+
+:hasEtyLink a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "has etymological link"@en ;
+    rdfs:comment "'has etymological link' is an object property that relates an Etymology with one of its constituent Etymological Link objects."@en ;
+    rdfs:domain :Etymology ;
+    rdfs:range :EtyLink .
+

@@ -1,0 +1,243 @@
+@prefix : <http://lari-datasets.ilc.cnr.it/practiseEtyLex#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix lime: <http://www.w3.org/ns/lemon/lime#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix lemonEty: <http://lari-datasets.ilc.cnr.it/lemonEty#> .
+
+
+<http://lari-datasets.ilc.cnr.it/practiseEtyLex#> a owl:NamedIndividual , lime:lexicon ;
+	dct:contributor <http://www.ilc.cnr.it/en/content/anas_fahad_khan> ;
+	dct:description "This is an example English lexicon that was created to show how to use the classes and properties of the lemonEty vocabulary."@en ;
+	dct:issued "2018-05-03" ;
+	dct:language <http://id.loc.gov/vocabulary/iso639-2/en> , <http://lexvo.org/id/iso639-1/eng> ;
+	dct:rights "CC-BY" ;
+	lime:entry :friar_EN_le , :tempura_EN_le ;
+	lime:language "en" ; 
+	owl:imports <http://lari-datasets.ilc.cnr.it/lemonEty#>,  <http://www.w3.org/ns/lemon/ontolex#> .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#etyLink_ENM_EN
+
+:etyLink_ENM_EN a owl:NamedIndividual , lemonEty:EtyLink ;
+	rdfs:comment "An etymological relationship (borrowing) between 'frere' (in Middle English) and 'friar' (in Modern English)"@en ;
+	lemonEty:etyLinkType "'specialisation'"@en ;
+	lemonEty:etySource :frere_ENM_et ;
+	lemonEty:etyTarget :friar_EN_le .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#etyLink_FRO_ENM
+
+:etyLink_FRO_ENM a owl:NamedIndividual , lemonEty:EtyLink ;
+	rdfs:comment "An etymological relationship (borrowing) between 'frere' (Old French) and 'frere' (in  Middle English)"@en ;
+	lemonEty:etyLinkType "'borrowing'"@en ;
+	lemonEty:etySource :frere_FRO_et ;
+	lemonEty:etySubSource :frere_FRO_relig_sense ;
+	lemonEty:etyTarget :frere_ENM_et .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#etyLink_JP_EN
+
+:etyLink_JP_EN a owl:NamedIndividual , lemonEty:EtyLink ;
+	rdfs:comment "An etymological relationship (borrowing) between 'tenpura' (in Japanese) and 'tempura' (in English)"@en ;
+	lemonEty:etyLinkType "'borrowing'"@en ;
+	lemonEty:etySource :tenpura_JP_et ;
+	lemonEty:etyTarget :tempura_EN_le .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#etyLink_LA_FRO
+
+:etyLink_LA_FRO a owl:NamedIndividual , lemonEty:EtyLink ;
+	rdfs:comment "An etymological relationship (inheritance) between 'frater' (in Latin) and 'frere' (in Old France)"@en ;
+	lemonEty:etyLinkType "'inheritance'"@en ;
+	lemonEty:etySource :frater_LA_et ;
+	lemonEty:etySubSource :frater_LA_accsingform ;
+	lemonEty:etyTarget :frere_FRO_et .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#etyLink_LA_PT
+
+:etyLink_LA_PT a owl:NamedIndividual , lemonEty:EtyLink ;
+	rdfs:comment "An etymological relationship between 'tempus' (in Latin) and 'tempora' (in Portuguese)"@en ;
+	lemonEty:etySource :tempus_LA_et ;
+	lemonEty:etyTarget :tempora_PT_et .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#etyLink_PT_JP
+
+:etyLink_PT_JP a owl:NamedIndividual , lemonEty:EtyLink ;
+	rdfs:comment "An etymological relationship between 'tempora' (in Portuguese) and 'tenpura' (in Japanese)"@en ;
+	lemonEty:etyLinkType "'borrowing'"@en ;
+	lemonEty:etySource :tempora_PT_et ;
+	lemonEty:etyTarget :tenpura_JP_et .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frater_LA_accsingform
+
+:frater_LA_accsingform a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The singular accusative form the Latin etymon 'frater'"@en ;
+	ontolex:writtenRep "'fratrem'"@la .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frater_LA_et
+
+:frater_LA_et a owl:NamedIndividual , lemonEty:Etymon ;
+	rdfs:comment "The Latin etymon 'frater'"@en ;
+	dct:language <http://www.lexvo.org/data/iso639-3/lat> ;
+	ontolex:canonicalForm :frater_LA_lemma ;
+	ontolex:otherForm :frater_LA_accsingform ;
+	ontolex:sense :frater_LA_sense .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frater_LA_lemma
+
+:frater_LA_lemma a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The lemma of the Latin etymon 'frater'"@en ;
+	ontolex:phoneticRep "'/ˈfraː.ter/'"@ipa ;
+	ontolex:writtenRep "'frāter'"@la .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frater_LA_sense
+
+:frater_LA_sense a owl:NamedIndividual , ontolex:LexicalSense ;
+	rdfs:comment "A sense of the Latin etymon 'frater'"@en ;
+	ontolex:reference <http://dbpedia.org/page/Brother> .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frere_ENM_et
+
+:frere_ENM_et a owl:NamedIndividual , lemonEty:Etymon ; 
+	rdfs:comment "The Middle English lexical etymon 'frere'"@en ;
+	ontolex:canonicalForm :frere_ENM_lemma .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frere_ENM_lemma
+
+:frere_ENM_lemma a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The lemma for the Middle English etymon 'frere'"@en ;
+	ontolex:writtenRep "'frere'"@enm .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frere_FRO_bro_sense
+
+:frere_FRO_bro_sense a owl:NamedIndividual , ontolex:LexicalSense ;
+	rdfs:comment "A lexical sense for the Old French etymon 'friar'"@en ;
+	ontolex:reference <http://dbpedia.org/page/Brother> .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frere_FRO_et
+
+:frere_FRO_et a owl:NamedIndividual , lemonEty:Etymon  ;
+	rdfs:comment "The Old French etymon 'frere'"@en ;
+	ontolex:canonicalForm :frere_FRO_lemma ;
+	ontolex:sense :frere_FRO_bro_sense , :frere_FRO_relig_sense .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frere_FRO_lemma
+
+:frere_FRO_lemma a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The lemma for the old French etymon 'frere'"@en ;
+	ontolex:writtenRep "'frere'"@fro .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#frere_FRO_relig_sense
+
+:frere_FRO_relig_sense a owl:NamedIndividual , ontolex:LexicalSense ;
+	rdfs:comment "A lexical sense for the lexical entry 'friar'"@en ;
+	ontolex:reference <http://dbpedia.org/resource/Friar> .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#friar_EN_le
+
+:friar_EN_le a owl:NamedIndividual , ontolex:LexicalEntry ;
+	rdfs:comment "The English lexical entry 'friar'"@en ;
+	lemonEty:etymology :friar_etymology ;
+	ontolex:canonicalForm :friar_EN_lemma .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#friar_EN_lemma
+
+:friar_EN_lemma a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The lemma for the English word 'friar'"@en ;
+	ontolex:phoneticRep "'/ˈfɹaɪə/'ipa-uk" , "'/ˈfɹaɪɚ/'"@ipa-us ;
+	ontolex:writtenRep "'friar'"@en .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#friar_etymology
+
+:friar_etymology a owl:NamedIndividual , lemonEty:Etymology ;
+	rdfs:comment "An etymology for the English word 'friar'"@en ;
+	lemonEty:hasEtyLink :etyLink_ENM_EN , :etyLink_FRO_ENM , :etyLink_LA_FRO ;
+	lemonEty:startingLink :etyLink_LA_FRO ;
+	:etymon :frater_LA_et , :frere_ENM_et , :frere_FRO_et .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempero_PT_et
+
+:tempero_PT_et a owl:NamedIndividual , lemonEty:Etymon ;
+	rdfs:comment "The Portuguese etymon 'tempero'"@en ;
+	dct:language <http://www.lexvo.org/data/iso639-3/por> .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempora_PT_et
+
+:tempora_PT_et a owl:NamedIndividual , lemonEty:Etymon ;
+	rdfs:comment "The Portuguese etymon 'tempora'"@en ;
+	dct:language <http://www.lexvo.org/data/iso639-3/por> ;
+	ontolex:canonicalForm :tempora_PT_lemma .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempora_PT_lemma
+
+:tempora_PT_lemma a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The lemma for the Portuguese etymon 'tempora'"@en ;
+	ontolex:writtenRep "'tempora'"@pt .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempura_EN_le
+
+:tempura_EN_le a owl:NamedIndividual , ontolex:LexicalEntry ;
+	rdfs:comment "The English lexical entry 'tempura'"@en ;
+	lemonEty:cognate :tempura_IT_cg ;
+	lemonEty:etymology :tempura_etymology1 ;
+	dct:language <http://id.loc.gov/vocabulary/iso639-2/eng> ;
+	lexinfo:partOfSpeech lexinfo:noun ;
+	ontolex:canonicalForm :tempura_EN_lemma .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempura_EN_lemma
+
+:tempura_EN_lemma a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The lemma for the English lexical entry 'tempura'"@en ;
+	ontolex:phoneticRep "'/ˈtɛmpʊɹə/'"@ipa ;
+	ontolex:writtenRep "'tempura'"@en .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempura_IT_cg
+
+:tempura_IT_cg a owl:NamedIndividual , lemonEty:Cognate ;
+	rdfs:comment "The Italian cognate 'tempura'"@en;
+	ontolex:canonicalForm :tempura_IT_lemma .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempura_IT_lemma
+
+:tempura_IT_lemma a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The lemma for the Italian cognate 'tempura'"@en ;
+	ontolex:phoneticRep "' /temˈpu.ra/'"@ipa ;
+	ontolex:writtenRep "\"tempura\""@it .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempura_etymology1
+
+:tempura_etymology1 a owl:NamedIndividual , lemonEty:Etymology ;
+	lemonEty:hasEtyLink :etyLink_JP_EN , :etyLink_LA_PT , :etyLink_PT_JP ;
+	lemonEty:startingLink :etyLink_LA_PT ;
+	:etymon :tempora_PT_et , :tempus_LA_et , :tenpura_JP_et ;
+	rdfs:comment "The etymology for the English lexical entry 'tempura'"@en .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempus_LA_et
+
+:tempus_LA_et a owl:NamedIndividual , lemonEty:Etymon ;
+	dct:language <http://www.lexvo.org/page/iso639-3/lat> ;
+	rdfs:comment "The latin etymon 'tempus'"@en ;
+	ontolex:canonicalForm :tempus_LA_lemma .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tempus_LA_lemma
+
+:tempus_LA_lemma a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The lemma for the latin lexical entry 'tempus'"@en ;
+	ontolex:writtenRep "'tempus'"@la .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tenpura_JP_et
+
+:tenpura_JP_et a owl:NamedIndividual , lemonEty:Etymon ;
+	dct:language <http://lexvo.org/id/iso639-3/jpn> ;
+	rdfs:comment "The Japanese etymon 'tempura'"@en ;
+	ontolex:canonicalForm :tenpura_JP_lemma .
+# 
+# http://lari-datasets.ilc.cnr.it/practiseEtyLex#tenpura_JP_lemma
+
+:tenpura_JP_lemma a owl:NamedIndividual , ontolex:Form ;
+	rdfs:comment "The lemma for the Japanese word 'tenpura'"@en ;
+	ontolex:writtenRep "tenpura"@ja-latn , "てんぷら"@jp-hira , "天麩羅"@jp-jpan .
+# 
+# Generated by the OWL API (version 4.2.5.20160517-0735) https://github.com/owlcs/owlapi
